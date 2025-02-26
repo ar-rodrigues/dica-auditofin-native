@@ -6,68 +6,69 @@ import Entypo from "@expo/vector-icons/Entypo";
 
 const TabsLayout = () => {
   return (
-    <Tabs
-      screenOptions={{
-        tabBarShowLabel: false,
-        tabBarActiveTintColor: "#007AFF",
-        tabBarInactiveTintColor: "#888",
-        tabBarStyle: {
-          backgroundColor: "white",
-          borderTopWidth: 1,
-          borderTopColor: "#ddd",
-          height: 60,
-          paddingBottom: 10,
-          paddingTop: 10,
-        },
-      }}
-    >
-      <Tabs.Screen
-        name="home"
-        options={{
-          title: "Home",
+    <>
+      <Tabs
+        screenOptions={{
           headerShown: false,
-          tabBarIcon: ({ focused }) => (
-            <View style={{ alignItems: "center", width: 80 }}>
-              <Entypo
-                name="home"
-                size={focused ? 24 : 22}
-                color={focused ? "#007AFF" : "#888"}
-              />
-              <Text
-                className={`text-xs mt-1 ${
-                  focused ? "text-blue-500" : "text-gray-500"
-                }`}
-              >
-                Home
-              </Text>
-            </View>
-          ),
+          tabBarShowLabel: false,
+          tabBarActiveTintColor: "#007AFF",
+          tabBarInactiveTintColor: "#888",
+          tabBarStyle: {
+            backgroundColor: "white",
+            borderTopWidth: 1,
+            borderTopColor: "#ddd",
+            height: 110,
+            paddingBottom: 10,
+            paddingTop: 10,
+          },
         }}
-      />
-      <Tabs.Screen
-        name="dashboard"
-        options={{
-          title: "Dashboard",
-          headerShown: false,
-          tabBarIcon: ({ focused }) => (
-            <View style={{ alignItems: "center", width: 80 }}>
-              <AntDesign
-                name="piechart"
-                size={focused ? 24 : 22}
-                color={focused ? "#007AFF" : "#888"}
-              />
-              <Text
-                className={`text-xs mt-1 ${
-                  focused ? "text-blue-500" : "text-gray-500"
-                }`}
-              >
-                Dashboard
-              </Text>
-            </View>
-          ),
-        }}
-      />
-    </Tabs>
+      >
+        <Tabs.Screen
+          name="home"
+          options={{
+            title: "Home",
+            tabBarIcon: ({ focused }) => (
+              <View style={{ alignItems: "center", width: 80 }}>
+                <Entypo
+                  name="home"
+                  size={focused ? 24 : 22}
+                  color={focused ? "#007AFF" : "#888"}
+                />
+                <Text
+                  className={`text-xs mt-1 ${
+                    focused ? "text-blue-500" : "text-gray-500"
+                  }`}
+                >
+                  Home
+                </Text>
+              </View>
+            ),
+          }}
+        />
+        <Tabs.Screen
+          name="dashboard"
+          options={{
+            title: "Dashboard",
+            tabBarIcon: ({ focused }) => (
+              <View style={{ alignItems: "center", width: 80 }}>
+                <AntDesign
+                  name="piechart"
+                  size={focused ? 24 : 22}
+                  color={focused ? "#007AFF" : "#888"}
+                />
+                <Text
+                  className={`text-xs mt-1 ${
+                    focused ? "text-blue-500" : "text-gray-500"
+                  }`}
+                >
+                  Dashboard
+                </Text>
+              </View>
+            ),
+          }}
+        />
+      </Tabs>
+    </>
   );
 };
 

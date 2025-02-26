@@ -3,21 +3,23 @@ import React, { useEffect } from "react";
 import CustomButton from "@/components/CustomButton";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { logo } from "@/constants/Images";
-import { router } from "expo-router";
+import { useRouter } from "expo-router";
 import { useAtom } from "jotai";
-import { sessionAtom, checkSession } from "@/atoms/sessionAtom";
+import { sessionAtom } from "@/atoms/sessionAtom";
 
-const index = () => {
-  const [session, setSession] = useAtom(sessionAtom);
+const Index = () => {
+  const [session] = useAtom(sessionAtom);
+  const router = useRouter();
   useEffect(() => {
-    checkSession(setSession);
-  }, []);
+    if (!router) return;
+    const timeout = setTimeout(() => {
+      if (session) {
+        router.replace("/home"); // Redirect to home if logged in
+      }
+    }, 100); // Small delay to ensure RootLayout is mounted
 
-  useEffect(() => {
-    if (session) {
-      router.push("/home");
-    }
-  }, [session]);
+    return () => clearTimeout(timeout); // Cleanup timeout
+  }, [session, router]);
   return (
     <SafeAreaView className="h-full bg-primary">
       <ScrollView contentContainerStyle={{ height: "100%" }}>
@@ -47,4 +49,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Index;

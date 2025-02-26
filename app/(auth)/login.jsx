@@ -6,8 +6,7 @@ import FormField from "@/components/FormField";
 import CustomButton from "@/components/CustomButton";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { router } from "expo-router";
-import { useAtom } from "jotai";
-import { sessionAtom, checkSession } from "@/atoms/sessionAtom";
+import { saveSessionToStorage } from "../../atoms/sessionAtom";
 
 // Tells Supabase Auth to continuously refresh the session automatically if
 // the app is in the foreground. When this is added, you will continue to receive
@@ -25,17 +24,21 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
-  const [session, setSession] = useAtom(sessionAtom); // Use the session atom
+  const [session, setSession] = useState(null);
 
-  // Check the session when the component mounts
+  //console.log("session", session?.user.email);
   useEffect(() => {
-    checkSession(setSession);
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setSession(session);
+    });
+    supabase.auth.onAuthStateChange((_event, session) => {
+      setSession(session);
+    });
   }, []);
 
-  // Redirect to home if a session exists
   useEffect(() => {
     if (session) {
-      router.push("home");
+      router.replace("/home");
     }
   }, [session]);
 
@@ -56,6 +59,7 @@ const Login = () => {
         Alert.alert("Login Error", error.message, [{ text: "OK" }]);
       } else {
         setSession(data.session); // Update session state
+        saveSessionToStorage(data.session); // Save session to storage
       }
     } catch (error) {
       Alert.alert("Error", error.error_description || error.message, [
