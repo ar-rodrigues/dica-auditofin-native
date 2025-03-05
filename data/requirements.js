@@ -1,0 +1,76 @@
+export const departments = {
+  "SECRETARÍA DEL AYUNTAMIENTO": 1,
+  TESORERÍA: 2,
+  "DIRECCIÓN DE RECURSOS HUMANOS": 3,
+  "DIRECCIÓN DE ADMINISTRACIÓN": 4,
+  "DIRECCIÓN DE OBRAS PÚBLICAS": 5,
+  "DIRECCIÓN DE ASUNTOS JURÍDICOS": 6,
+  CONTRALORÍA: 7,
+  "GOBIERNO ABIERTO": 8,
+};
+
+export const requirements = [
+  {
+    id: "1.1",
+    dept: 1,
+    name: "Relación de actas de Sesión de Cabildo",
+    format: "Excel",
+    delivered: false,
+  },
+  {
+    id: "2.1",
+    dept: 2,
+    name: "Presupuesto de egresos para el ejercicio 2024",
+    format: "PDF",
+    delivered: true,
+  },
+  {
+    id: "2.2",
+    dept: 2,
+    name: "Estados financieros mensuales y cortes de caja",
+    format: "Excel, PDF",
+    delivered: true,
+  },
+  {
+    id: "3.1",
+    dept: 3,
+    name: "Plantilla de personal autorizada 2024",
+    format: "Excel, PDF",
+    delivered: true,
+  },
+  {
+    id: "4.1",
+    dept: 4,
+    name: "Programa anual de adquisiciones",
+    format: "Excel, PDF",
+    delivered: true,
+  },
+  {
+    id: "5.1",
+    dept: 5,
+    name: "Expedientes unitarios de obras y acciones",
+    format: "PDF",
+    delivered: false,
+  },
+  {
+    id: "6.1",
+    dept: 6,
+    name: "Relación de litigios",
+    format: "Excel, PDF",
+    delivered: false,
+  },
+  {
+    id: "7.1",
+    dept: 7,
+    name: "Programa de trabajo 2024",
+    format: "PDF",
+    delivered: true,
+  },
+  {
+    id: "8.1",
+    dept: 8,
+    name: "Reportes de evaluación trimestral",
+    format: "PDF",
+    delivered: true,
+  },
+];

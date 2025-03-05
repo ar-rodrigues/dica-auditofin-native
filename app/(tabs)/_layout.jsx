@@ -24,28 +24,6 @@ const TabsLayout = () => {
         }}
       >
         <Tabs.Screen
-          name="home"
-          options={{
-            title: "Home",
-            tabBarIcon: ({ focused }) => (
-              <View style={{ alignItems: "center", width: 80 }}>
-                <Entypo
-                  name="home"
-                  size={focused ? 24 : 22}
-                  color={focused ? "#007AFF" : "#888"}
-                />
-                <Text
-                  className={`text-xs mt-1 ${
-                    focused ? "text-blue-500" : "text-gray-500"
-                  }`}
-                >
-                  Home
-                </Text>
-              </View>
-            ),
-          }}
-        />
-        <Tabs.Screen
           name="dashboard"
           options={{
             title: "Dashboard",
@@ -62,6 +40,30 @@ const TabsLayout = () => {
                   }`}
                 >
                   Dashboard
+                </Text>
+              </View>
+            ),
+          }}
+        />
+
+        <Tabs.Screen
+          name="home"
+          options={{
+            title: "Home",
+            tabBarIcon: ({ focused, color, size }) => (
+              <View style={{ alignItems: "center", width: 80 }}>
+                <Entypo
+                  name="documents"
+                  size={focused ? 24 : 22}
+                  color={focused ? "#007AFF" : "#888"}
+                  style={{ opacity: 1 }}
+                />
+                <Text
+                  className={`text-xs mt-1 ${
+                    focused ? "text-blue-500" : "text-gray-500"
+                  }`}
+                >
+                  Requerimientos
                 </Text>
               </View>
             ),

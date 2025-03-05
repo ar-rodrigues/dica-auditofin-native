@@ -38,7 +38,7 @@ const Login = () => {
 
   useEffect(() => {
     if (session) {
-      router.replace("/home");
+      router.replace("/dashboard");
     }
   }, [session]);
 
