@@ -1,25 +1,13 @@
 import { Image, ScrollView, StatusBar, Text, View } from "react-native";
-import React, { useEffect } from "react";
+import React from "react";
 import CustomButton from "@/components/CustomButton";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { logo } from "@/constants/Images";
 import { useRouter } from "expo-router";
-import { useAtom } from "jotai";
-import { sessionAtom } from "@/atoms/sessionAtom";
 
 const Index = () => {
-  const [session] = useAtom(sessionAtom);
   const router = useRouter();
-  useEffect(() => {
-    if (!router) return;
-    const timeout = setTimeout(() => {
-      if (session) {
-        router.replace("/home"); // Redirect to home if logged in
-      }
-    }, 100); // Small delay to ensure RootLayout is mounted
 
-    return () => clearTimeout(timeout); // Cleanup timeout
-  }, [session, router]);
   return (
     <SafeAreaView className="h-full bg-primary">
       <ScrollView contentContainerStyle={{ height: "100%" }}>

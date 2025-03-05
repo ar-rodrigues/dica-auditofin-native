@@ -6,7 +6,7 @@ import FormField from "@/components/FormField";
 import CustomButton from "@/components/CustomButton";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { router } from "expo-router";
-import { saveSessionToStorage } from "../../atoms/sessionAtom";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 // Tells Supabase Auth to continuously refresh the session automatically if
 // the app is in the foreground. When this is added, you will continue to receive
@@ -24,23 +24,32 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
-  const [session, setSession] = useState(null);
 
-  //console.log("session", session?.user.email);
   useEffect(() => {
+    // Check for existing session
     supabase.auth.getSession().then(({ data: { session } }) => {
-      setSession(session);
+      console.log("Login component - Current session:", session?.user?.email);
+      if (session) {
+        router.replace("/dashboard");
+      }
     });
-    supabase.auth.onAuthStateChange((_event, session) => {
-      setSession(session);
-    });
-  }, []);
 
-  useEffect(() => {
-    if (session) {
-      router.replace("/dashboard");
-    }
-  }, [session]);
+    // Listen for auth changes
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange(async (_event, session) => {
+      console.log(
+        "Login component - Auth state changed:",
+        _event,
+        session?.user?.email
+      );
+      if (session) {
+        router.replace("/dashboard");
+      }
+    });
+
+    return () => subscription.unsubscribe();
+  }, []);
 
   async function signInWithEmail() {
     if (!email || !password) {
@@ -58,14 +67,15 @@ const Login = () => {
       if (error) {
         Alert.alert("Login Error", error.message, [{ text: "OK" }]);
       } else {
-        setSession(data.session); // Update session state
-        saveSessionToStorage(data.session); // Save session to storage
+        console.log("Login successful:", data.session?.user?.email);
+        // Store session in AsyncStorage
+        await AsyncStorage.setItem("session", JSON.stringify(data.session));
+        console.log("Session stored after login");
       }
     } catch (error) {
       Alert.alert("Error", error.error_description || error.message, [
         { text: "OK" },
       ]);
-      setLoading(false);
     } finally {
       setLoading(false);
     }

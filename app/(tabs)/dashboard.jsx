@@ -49,7 +49,7 @@ const PowerBIDashboard = () => {
           <Text className="text-base font-bold text-gray-800">Información</Text>
           <Text className="mt-1 text-sm leading-5 text-gray-600">
             Este dashboard muestra datos actualizados sobre los proyectos y
-            estados financieros de la administración municipal de Xalapa. Puedes
+            estados financieros de la administración municipal. Puedes
             interactuar directamente con los gráficos y tablas.
           </Text>
         </View>
