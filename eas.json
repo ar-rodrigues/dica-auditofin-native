@@ -1,8 +1,33 @@
 {
+  "cli": {
+    "version": ">= 14.2.0",
+    "appVersionSource": "remote"
+  },
   "build": {
-    "production": {
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal"
+    },
+    "preview": {
+      "distribution": "internal",
       "android": {
         "buildType": "apk"
+      }
+    },
+    "production": {
+      "autoIncrement": true
+    }
+  },
+  "submit": {
+    "production": {
+      "ios": {
+        "appleId": "ti@tksmx.com",
+        "ascAppId": "6742845335",
+        "appleTeamId": "Q9686GY3Z2"
+      },
+      "android": {
+        "serviceAccountKeyPath": "./dicamexico-96b0a12c24e0.json",
+        "track": "alpha"
       }
     }
   }

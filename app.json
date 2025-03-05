@@ -1,33 +1,45 @@
 {
   "expo": {
-    "name": "dica-auditofin-native",
-    "slug": "dica-auditofin-native",
+    "name": "Dica",
+    "slug": "dica",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
-    "scheme": "dica-auditofin-native",
+    "icon": "./assets/images/logo-300x200.png",
+    "scheme": "dica",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/images/logo-300x200.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.arodrigues.tks.dica",
+      "buildNumber": "1",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/adaptive-icon.png",
+        "foregroundImage": "./assets/images/logo-300x200.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.arodrigues.tks.dica",
+      "versionCode": 1
     },
     "web": {
       "bundler": "metro",
       "output": "static",
-      "favicon": "./assets/images/favicon.png"
+      "favicon": "./assets/images/logo-300x200.png"
     },
     "plugins": [
       "expo-router",
       [
         "expo-splash-screen",
         {
-          "image": "./assets/images/splash-icon.png",
+          "image": "./assets/images/logo-300x200.png",
           "imageWidth": 200,
           "resizeMode": "contain",
           "backgroundColor": "#ffffff"
@@ -42,8 +54,9 @@
         "origin": false
       },
       "eas": {
-        "projectId": "ece64d3c-ac85-494b-b447-9559cd207c94"
+        "projectId": "86fbcd4a-b5ee-4c3c-a20b-095d2f0bf11c"
       }
-    }
+    },
+    "owner": "arodrigues.tks"
   }
 }

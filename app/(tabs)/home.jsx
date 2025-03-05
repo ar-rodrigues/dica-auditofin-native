@@ -14,6 +14,7 @@ import { sessionAtom } from "../../atoms/sessionAtom";
 import { supabase } from "../../lib/supabase";
 import { router } from "expo-router";
 import { Feather } from "@expo/vector-icons";
+import AuditHeader from "../../components/AuditHeader";
 
 const departments = {
   "SECRETARÍA DEL AYUNTAMIENTO": 1,
@@ -112,11 +113,6 @@ const Home = () => {
   const [filterModalVisible, setFilterModalVisible] = useState(false);
   const [filterLabel, setFilterLabel] = useState("Todos los documentos");
 
-  const logout = async () => {
-    await supabase.auth.signOut();
-    router.replace("/"); // Redirect to login on logout
-  };
-
   const filteredRequirements = requirements.filter((req) => {
     const matchesDept =
       selectedDept === "all" || req.dept === departments[selectedDept];
@@ -178,22 +174,7 @@ const Home = () => {
     <SafeAreaView className="h-full bg-gray-50">
       <ScrollView>
         <View className="p-4 bg-gray-50">
-          {/* Header */}
-          <View className="mb-6">
-            <Text className="mb-1 text-2xl font-bold text-gray-900">
-              Auditoría Xalapa 2024
-            </Text>
-            <Text className="mb-2 text-gray-600">
-              Requerimientos de documentación
-            </Text>
-            <Text className="text-gray-900">Usuario: {email}</Text>
-            <TouchableOpacity
-              className="self-start px-4 py-2 mt-4 bg-red-500 rounded-md"
-              onPress={logout}
-            >
-              <Text className="font-semibold text-white">Cerrar Sesión</Text>
-            </TouchableOpacity>
-          </View>
+          <AuditHeader />
 
           {/* Search */}
           <View className="relative mb-4">

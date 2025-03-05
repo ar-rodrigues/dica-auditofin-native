@@ -7,7 +7,9 @@ module.exports = {
     extend: {
       colors: {
         primary: "#020381",
-        secondary: "#A2C224,",
+        secondary: "#A2C224",
+        terciary: "#e5e7eb",
+        quaternary: "#161617",
       },
       fontFamily: {
         sans: ["Inter", "sans-serif"],

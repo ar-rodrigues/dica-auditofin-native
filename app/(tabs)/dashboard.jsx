@@ -8,27 +8,20 @@ import {
 } from "react-native";
 import { WebView } from "react-native-webview";
 import { SafeAreaView } from "react-native-safe-area-context";
+import AuditHeader from "../../components/AuditHeader";
 
 const PowerBIDashboard = () => {
   const [loading, setLoading] = useState(true);
   const powerBIUrl =
-    "https://app.powerbi.com/view?r=eyJrIjoiNDM1YzNlOGUtZGExNS00NDkzLWJiNmYtNGVjZWM5ZTcyYjBkIiwidCI6Ijk2NDYyYWMzLTYwMzktNGE1YS1iYWI5LTBjMmY5YjNkYzFiYSJ9";
+    "https://app.powerbi.com/view?r=eyJrIjoiZTI2NmE1ZGMtNmZhNy00NTFhLWE3MjEtZDJlY2UyODA2ZmFjIiwidCI6Ijk2NDYyYWMzLTYwMzktNGE1YS1iYWI5LTBjMmY5YjNkYzFiYSJ9&pageName=8ae6bf7bf1366a5a9756";
 
   const windowWidth = Dimensions.get("window").width * 0.9;
   const webViewHeight = windowWidth * 0.85;
 
   return (
     <SafeAreaView className="flex-1 bg-gray-100">
-      <ScrollView className="flex-1 ">
-        <View className="p-4 bg-white border-b border-gray-300">
-          <Text className="text-xl font-bold text-gray-800">
-            Dashboard DICA Xalapa
-          </Text>
-          <Text className="mt-1 text-gray-500 text-md">
-            Visualización de datos actualizada diariamente
-          </Text>
-        </View>
-
+      <ScrollView className="flex-1">
+        <AuditHeader />
         <View
           className="w-full px-4 mt-4 overflow-hidden bg-white rounded-lg shadow"
           style={{ height: webViewHeight }}
@@ -41,7 +34,7 @@ const PowerBIDashboard = () => {
           )}
           <WebView
             source={{ uri: powerBIUrl }}
-            className="flex-1 "
+            className="flex-1"
             javaScriptEnabled
             domStorageEnabled
             startInLoadingState
