@@ -104,7 +104,6 @@ const Login = () => {
             value={password}
             handleChangeText={(e) => setPassword(e)}
             otherStyles="mt-7 mb-7"
-            keyboardType="password"
           />
           <CustomButton
             text="Acceder"
